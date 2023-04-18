@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+    <div class="container">
+        <div class="row gap-5">
+            <% for (let application of applications){ %>
+                <% if (application.status == "Accept"){ %>
+                <div class="card" style="width: 18rem; background-color: #06d6a0;">
+                    <div class="card-body">
+                        <h5 class="card-title"><a style="color: black;"href="/applications/<%=application._id%>"><%= application.companyName %></a></h5>
+                        <p class="card-text">submittion date:<%= application.submittedDate %> </p>
+                        <p class="card-text">status: <%= application.status %></p>
+                        <a href="/applications/<%=application._id%>/edit" class="btn btn-info">Edit</a>
+                        <form class="d-inline" action="/applications/<%=application._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <% }else if (application.status == "Pending"){ %> %>
+                    <div class="card" style="width: 18rem; background-color: #ffd166; ">
+                        <div class="card-body">
+                            <h5 class="card-title"><a style="color: black;" href="/applications/<%=application._id%>"><%= application.companyName %></a></h5>
+                            <p class="card-text">submittion date:<%= application.submittedDate %> </p>
+                            <p class="card-text">status: <%= application.status %></p>
+                            <a href="/applications/<%=application._id%>/edit" class="btn btn-info">Edit</a>
+                            <form class="d-inline" action="/applications/<%=application._id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                    <% }else if (application.status == "Reject"){ %> %>
+                        <div class="card" style="width: 18rem; background-color:#ef476f;">
+                            <div class="card-body">
+                                <h5 class="card-title"><a style="color: black;" href="/applications/<%=application._id%>"><%= application.companyName %></a></h5>
+                                <p class="card-text">submittion date:<%= application.submittedDate %> </p>
+                                <p class="card-text">status: <%= application.status %></p>
+                                <a href="/applications/<%=application._id%>/edit" class="btn btn-info">Edit</a>
+                                <form class="d-inline" action="/applications/<%=application._id%>?_method=DELETE" method="POST">
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                        <% } %>
+            <% } %>
+        </div>
+    </div>
+
